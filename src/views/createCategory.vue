@@ -174,8 +174,8 @@ export default {
               });
               // this.$router.push({name: "categoryList"});
             }
+            this.$router.push("categoryList");
           });
-          this.$router.push("categoryList");
         }
       }
     },

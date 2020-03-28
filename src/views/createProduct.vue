@@ -204,8 +204,8 @@ export default {
               });
               // this.$router.push({name: "productList"});
             }
+            this.$router.push("productList");
           });
-          this.$router.push("productList");
         }
       }
     },

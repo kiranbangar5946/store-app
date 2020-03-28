@@ -152,12 +152,11 @@ export default {
           this.perPage = data.data.count;
           this.loader = false;
           this.dataFound = true;
-        } else if (data.data == 204 && page > 1) {
+        } else if (data.data == "No content" && page > 1) {
           this.goToPage(page - 1);
-        } else if (data.data == 204 && page == 1) {
+        } else if (data.data == "No content" && page == 1) {
           this.loader = false;
           this.dataFound = false;
-          this.allCategoryList = data.data;
         }
       });
     },
