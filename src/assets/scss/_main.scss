@@ -1,0 +1,220 @@
+@import "src/assets/scss/variable.scss";
+body {
+  background-color: #f5f4f4 !important;
+  font-family: $sans;
+  #app {
+    font-weight: 100;
+    color: $grey;
+  }
+}
+
+//colors
+
+.bg-lightorange {
+  background: $primary;
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+// Font Size
+
+.font-10 {
+  font-size: 10px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-22 {
+  font-size: 22px;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-26 {
+  font-size: 26px;
+}
+
+.font-28 {
+  font-size: 28px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.font-45 {
+  font-size: 45px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+.notification-color{
+  color:white ;
+}
+
+//sidenav
+.sidenavbar {
+  position: fixed;
+  top: 0;
+  min-height: 100vh;
+  background: #fff;
+  width: 225px;
+  line-height: 2.5;
+  .menu-content {
+    a {
+      text-decoration: none;
+      &.router-link-active {
+        text-decoration: none;
+        .nav-link {
+          color: $white;
+          background: #01afc2 !important;
+          border-radius: 0;
+        }
+        &:hover {
+          background: #01afc2 !important;
+        }
+      }
+      .nav-link:hover {
+        background: #eee;
+      }
+    }
+
+    .nav-link {
+      background-color: transparent;
+      border-radius: 0;
+      color: $grey;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+
+//topnav
+.main-header {
+  background: #fff;
+  margin-left: 225px;
+  line-height: 4.5;
+}
+
+//main content
+.main-content {
+  padding-left: 240px;
+}
+
+//title
+.title {
+  color: $grey;
+  font-weight: 100;
+  font-size: 15px;
+}
+
+//validation errors
+.error {
+  color: red;
+}
+
+.p-2.title {
+  color: #777;
+  font-size: 30px;
+}
+.logo {
+  width: 80%;
+  padding: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color: $grey;
+}
+
+//table list
+.project-list {
+  .project-list-content {
+    .table {
+      width: 97%;
+      margin-bottom: 1rem;
+      color: #212529;
+    }
+    .thead {
+      border: 1px solid #ccc;
+    }
+    .table .thead-dark th {
+      color: $white;
+      background-color: #01afc2;
+      border: none;
+    }
+    tr {
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+      margin-top: 2px;
+    }
+    td {
+      border: 0px;
+      color: $grey;
+    }
+  }
+
+  .project-list-pagination .pagination .page-item .page-link {
+    background-color: #01afc2;
+    color: $white;
+  }
+  .page-item.active .page-link {
+    border: 3px solid #92c946;
+  }
+}
+
+//create forms
+.createForms {
+  border: 1px solid #fff;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.text-right.p-2.font-14 {
+  background: white;
+}
+
+.table-hover tbody tr:hover {
+  color: #212529;
+  background-color: #eee;
+}
