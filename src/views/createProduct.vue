@@ -29,6 +29,26 @@
                     Name is required
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label for="productId">ProductId</label>
+                  <input
+                    type="text"
+                    name="productId"
+                    class="form-control"
+                    id="id"
+                    placeholder="Enter Product Id"
+                    v-model="product.productId"
+                    required
+                  />
+                  <div
+                    class="error"
+                    v-if="$v.product.productId.$error && $v.product.$touch"
+                  >
+                    ProductId is required
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="project">Select Category</label>
                   <select
@@ -86,7 +106,8 @@ export default {
     return {
       product: {
         name: "",
-        categoryId: ""
+        categoryId: "",
+        productId: ""
       },
       currentPage: "",
       totalCount: 0,
@@ -101,7 +122,7 @@ export default {
       name: {
         required
       },
-      categoryId: {
+      productId: {
         required
       }
     }

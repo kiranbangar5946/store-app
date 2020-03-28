@@ -49,12 +49,15 @@
               <td width="10px;">
                 {{ $index + 1 + (formData.page - 1) * perPage }}
               </td>
-              <td class="text-capitalize">{{ product.name }}</td>
               <td ng-if="product.categoryId.name " class="text-capitalize">
                 {{ product.categoryId.name }}
               </td>
+              <td class="text-capitalize">{{ product.name }}</td>
 
               <td class="text-capitalize">{{ product.productId }}</td>
+              <td ng-if="product.categoryId.catId" class="text-capitalize">
+                {{ product.categoryId.catId }}
+              </td>
 
               <td width="40px;">
                 <div class="p-1">
@@ -120,16 +123,19 @@ export default {
           key: "key1"
         },
         {
-          tableHeaderName: "Name",
-          key: "key1"
-        },
-
-        {
-          tableHeaderName: "Category",
+          tableHeaderName: "Category Name",
           key: "key1"
         },
         {
-          tableHeaderName: "ProductId",
+          tableHeaderName: "Product Name",
+          key: "key1"
+        },
+        {
+          tableHeaderName: "Product Id",
+          key: "key1"
+        },
+        {
+          tableHeaderName: "CategoryId",
           key: "key1"
         },
         {

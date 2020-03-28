@@ -30,6 +30,24 @@
                   </div>
                 </div>
 
+                <div class="form-group">
+                  <label for="catId">CategoryId</label>
+                  <input
+                    type="text"
+                    name="catId"
+                    class="form-control"
+                    id="id"
+                    placeholder="Enter Category Id"
+                    v-model="category.catId"
+                    required
+                  />
+                  <div
+                    class="error"
+                    v-if="$v.category.catId.$error && $v.category.$touch"
+                  >
+                    CategoryId is required
+                  </div>
+                </div>
                 <!-- Save/Cancel -->
                 <div class="d-flex justify-content-center">
                   <div class="p-2">
@@ -69,7 +87,8 @@ export default {
   data() {
     return {
       category: {
-        name: ""
+        name: "",
+        catId: ""
       },
       currentPage: "",
       totalCount: 0,
@@ -81,6 +100,9 @@ export default {
   validations: {
     category: {
       name: {
+        required
+      },
+      catId: {
         required
       }
     }
@@ -112,7 +134,7 @@ export default {
         if (this.paramsId) {
           this.category.id = this.paramsId;
           service.editCategory(this.category, data => {
-            if (data.status == 200) {
+            if (data) {
               this.$notify({
                 group: "foo",
                 type: "success",
