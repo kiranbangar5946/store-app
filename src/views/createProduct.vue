@@ -49,8 +49,9 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div v-if="this.dataFound" class="form-group">
                   <label for="project">Select Category</label>
+
                   <select
                     class="form-control"
                     type="text"
@@ -63,6 +64,14 @@
                       v-for="allCategory in allCategoryList"
                       >{{ allCategory.name }}</option
                     >
+                  </select>
+                </div>
+
+                <div v-if="!this.dataFound" class="form-group">
+                  <label for="project">Select Category</label>
+
+                  <select class="form-control" type="text" id="project">
+                    <option disabled>Please create category</option>
                   </select>
                 </div>
 
@@ -110,6 +119,7 @@ export default {
         productId: ""
       },
       currentPage: "",
+      dataFound: false,
       totalCount: 0,
       perPage: 0,
       paramsId: "",
@@ -138,10 +148,11 @@ export default {
   methods: {
     getCategoryList() {
       service.getCategoryList(data => {
-        if (data.status == 200) {
+        if (data.status == 200 && data.data != "No Category Found") {
           this.allCategoryList = data.data;
+          this.dataFound = true;
         } else {
-          this.allCategoryList = "No Category";
+          this.dataFound = false;
         }
       });
     },
@@ -165,13 +176,8 @@ export default {
           this.product.id = this.paramsId;
           service.editProduct(this.product, data => {
             if (data.status == 200) {
-              this.$notify({
-                group: "foo",
-                type: "success",
-                title: "Success message",
-                text: "product edited Successfully",
-                duration: 1500
-              });
+              this.$toaster.success("Product Saved successfully");
+
               // this.$router.push({name: "productList"});
             } else if (data.status == 204) {
               this.$notify({
@@ -184,28 +190,25 @@ export default {
             }
           });
           // this.$router.push("/productList");
-        } else {
+        } else if (product && product.categoryId) {
           service.saveProduct(this.product, data => {
             if (data.status == 200) {
-              this.$notify({
-                group: "foo",
-                type: "success",
-                title: "Success message",
-                text: "product Saved Successfully",
-                duration: 1500
-              });
-              // this.$router.push({name: "productList"});
+              this.$toaster.success("Product Saved successfully");
+
+              this.$router.push({ name: "productList" });
             } else if (data.status == 200) {
               this.$notify({
                 group: "foo",
                 type: "error",
                 title: "Error message",
-                text: "product Save Unsuccessfully"
+                text: "product Save Unsuccessfull"
               });
               // this.$router.push({name: "productList"});
             }
-            this.$router.push("productList");
+            // this.$router.push("productList");
           });
+        } else {
+          this.$toaster.error("Please create Category");
         }
       }
     },

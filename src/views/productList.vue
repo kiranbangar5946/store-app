@@ -49,14 +49,20 @@
               <td width="10px;">
                 {{ $index + 1 + (formData.page - 1) * perPage }}
               </td>
-              <td ng-if="product.categoryId.name " class="text-capitalize">
+              <td v-if="product.categoryId" class="text-capitalize">
                 {{ product.categoryId.name }}
+              </td>
+              <td v-if="!product.categoryId" class="text-capitalize">
+                -
               </td>
               <td class="text-capitalize">{{ product.name }}</td>
 
               <td class="text-capitalize">{{ product.productId }}</td>
-              <td ng-if="product.categoryId.catId" class="text-capitalize">
+              <td v-if="product.categoryId" class="text-capitalize">
                 {{ product.categoryId.catId }}
+              </td>
+              <td v-if="!product.categoryId" class="text-capitalize">
+                -
               </td>
 
               <td width="40px;">
@@ -84,7 +90,10 @@
           </tbody>
         </table>
       </div>
-      <div class="project-list-pagination d-flex justify-content-end mr-5">
+      <div
+        v-if="this.dataFound"
+        class="project-list-pagination d-flex justify-content-end mr-5"
+      >
         <b-pagination
           class="mb-0"
           align="center"
@@ -166,6 +175,7 @@ export default {
         } else if (data.data == 204 && page > 1) {
           this.goToPage(page - 1);
         } else if (data.data == 204 && page == 1) {
+          this.allProductList = [];
           this.loader = false;
           this.dataFound = false;
         }
@@ -180,21 +190,11 @@ export default {
     deleteOneProduct(product) {
       service.deleteOneProduct(product, data => {
         if (data.data.deletedCount) {
-          this.$notify({
-            group: "foo",
-            type: "success",
-            title: "Success message",
-            text: "Data deleted Successfully",
-            duration: 1500
-          });
+          this.$toaster.success("Product Deleted successfully");
           this.viewproduct(this.currentPage);
         } else {
-          this.$notify({
-            group: "foo",
-            type: "error",
-            title: "Error message",
-            text: "Data deleted Unsuccessfully"
-          });
+          this.$toaster.success("Product Deleted unsuccessfully");
+
           this.$router.push("/productList");
         }
       });

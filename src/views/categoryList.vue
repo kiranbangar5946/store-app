@@ -81,7 +81,10 @@
           </tbody>
         </table>
       </div>
-      <div class="project-list-pagination d-flex justify-content-end mr-5">
+      <div
+        v-if="this.dataFound"
+        class="project-list-pagination d-flex justify-content-end mr-5"
+      >
         <b-pagination
           class="mb-0"
           align="center"
@@ -154,7 +157,9 @@ export default {
           this.dataFound = true;
         } else if (data.data == "No content" && page > 1) {
           this.goToPage(page - 1);
-        } else if (data.data == "No content" && page == 1) {
+        } else if (data.data == "No content") {
+          this.allCategoryList = [];
+
           this.loader = false;
           this.dataFound = false;
         }

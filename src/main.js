@@ -17,6 +17,11 @@ Vue.use(Notifications);
 import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
 
+//toaster
+import Toaster from "v-toaster";
+import "v-toaster/dist/v-toaster.css";
+Vue.use(Toaster, { timeout: 1500 });
+
 //Fontawsome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";

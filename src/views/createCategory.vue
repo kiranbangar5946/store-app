@@ -135,13 +135,8 @@ export default {
           this.category.id = this.paramsId;
           service.editCategory(this.category, data => {
             if (data) {
-              this.$notify({
-                group: "foo",
-                type: "success",
-                title: "Success message",
-                text: "category edited Successfully",
-                duration: 1500
-              });
+              this.$toaster.success("Category Saved successfully");
+
               this.$router.push({ name: "categoryList" });
             } else if (data.status == 204) {
               this.$notify({
@@ -157,24 +152,12 @@ export default {
         } else {
           service.saveCategory(this.category, data => {
             if (data.status == 200) {
-              this.$notify({
-                group: "foo",
-                type: "success",
-                title: "Success message",
-                text: "category Saved Successfully",
-                duration: 1500
-              });
-              // this.$router.push({name: "categoryList"});
-            } else if (data.status == 200) {
-              this.$notify({
-                group: "foo",
-                type: "error",
-                title: "Error message",
-                text: "category Save Unsuccessfully"
-              });
-              // this.$router.push({name: "categoryList"});
+              this.$toaster.success("Category Saved successfully");
+              this.$router.push({ name: "categoryList" });
+            } else {
+              this.$toaster.error("Something went wrong");
             }
-            this.$router.push("categoryList");
+            // this.$router.push("categoryList");
           });
         }
       }
