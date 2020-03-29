@@ -174,21 +174,11 @@ export default {
     deleteOneCategory(user) {
       service.deleteOneCategory(user, data => {
         if (data) {
-          this.$notify({
-            group: "foo",
-            type: "success",
-            title: "Success message",
-            text: "Data deleted Successfully",
-            duration: 1500
-          });
+          this.$toaster.success("Category Deleted successfully");
+
           this.viewCategory(this.currentPage);
         } else {
-          this.$notify({
-            group: "foo",
-            type: "error",
-            title: "Error message",
-            text: "Data deleted Unsuccessfully"
-          });
+          this.$toaster.error("Product Deleted unsuccessfully");
           this.$router.push("/categoryList");
         }
       });
