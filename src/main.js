@@ -25,25 +25,15 @@ Vue.use(Toaster, { timeout: 1500 });
 //Fontawsome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(faCoffee);
-library.add(faPowerOff);
 library.add(faEdit);
-library.add(faEye);
 library.add(faPlus);
 library.add(faTrash);
-library.add(faUpload);
-library.add(faUser);
-library.add(faKey);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
